@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TonerController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\VendorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('components/{any}', [TonerController::class, 'components']);
 });
 
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+
+    // Route to show the form
+    Route::get('/vendors/create', [VendorController::class, 'create'])->name('vendors.create');
+
+    // Route to save the form
+    Route::post('/vendors', [VendorController::class, 'store'])->name('vendors.store');
+
+});
