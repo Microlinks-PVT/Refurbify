@@ -54,3 +54,56 @@ mix-manifest.json
 *.sublime-workspace
 .DS_Store
 Thumbs.db
+
+# ------------------------------------------------
+# Ignore files/folders in ANY subdirectory
+# The `**` is a "globstar" that means "match in any child folder"
+# ------------------------------------------------
+
+# 1. Dependencies
+# Ignore all vendor folders (e.g., Admin/Backend/vendor)
+**/vendor
+# Ignore all node_modules folders
+**/node_modules
+# Ignore Composer lock files (to avoid platform conflicts)
+**/composer.lock
+
+# 2. Security & Environment Files (CRITICAL)
+# Ignore all .env files (e.g., Admin/Backend/.env)
+**/.env
+**/.env.*
+# BUT, do NOT ignore the example files
+!**/.env.example
+
+# 3. Laravel Storage & Cache
+# Ignore all log files
+**/storage/logs/*.log
+# Ignore all framework cache, sessions, and views
+**/storage/framework/cache/*
+**/storage/framework/sessions/*
+**/storage/framework/testing/*
+**/storage/framework/views/*
+# BUT, do NOT ignore the .gitignore files that keep these folders
+!**/storage/framework/.gitignore
+
+# 4. Laravel Compiled Assets
+**/public/hot
+**/public/storage
+**/public/build
+**/mix-manifest.json
+
+# 5. Database
+# Ignore your local SQLite database files
+**/database/*.sqlite
+**/database/*.sqlite-journal
+
+# 6. IDE & OS Files
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-error.log*
