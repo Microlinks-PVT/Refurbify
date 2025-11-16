@@ -16,3 +16,41 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Laravel & PHP Dependencies
+/vendor
+/node_modules
+/composer.lock
+
+# Environment & Security (CRITICAL)
+.env
+.env.backup
+.phpunit.result.cache
+
+# Compiled Assets & Builds
+/public/hot
+/public/storage
+/public/build
+/storage/*.key
+mix-manifest.json
+
+# Storage, Logs & Cache
+/storage/logs/*.log
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+!/storage/framework/.gitignore
+
+# Database (SQLite)
+# This ignores your local database file
+/database/*.sqlite
+/database/*.sqlite-journal
+
+# IDE & Editor Settings
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
