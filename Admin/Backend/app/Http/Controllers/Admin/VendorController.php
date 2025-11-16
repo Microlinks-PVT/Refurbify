@@ -12,6 +12,14 @@ use Illuminate\Validation\Rules;
 
 class VendorController extends Controller
 {
+    public function index()
+    {
+        // Get all vendors, and load their related user data at the same time
+        $vendors = Vendor::with('user')->latest()->get();
+
+        return view('admin.vendors.index', compact('vendors'));
+    }
+
     public function create()
     {
         return view('admin.vendors.create');

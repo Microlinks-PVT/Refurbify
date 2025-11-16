@@ -79,6 +79,22 @@
                 </li>
 
                 <li class="nav-item">
+                        <a class="nav-link menu-link {{ request()->routeIs('admin.vendors.*') ? 'active' : '' }}" href="#sidebarVendors" data-bs-toggle="collapse" role="button" aria-expanded="{{ request()->routeIs('admin.vendors.*') ? 'true' : 'false' }}" aria-controls="sidebarVendors">
+                            <i class="bi bi-people"></i> <span data-key="t-vendors">Vendors</span>
+                        </a>
+                        <div class="collapse menu-dropdown {{ request()->routeIs('admin.vendors.*') ? 'show' : '' }}" id="sidebarVendors">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.vendors.index') }}" class="nav-link {{ request()->routeIs('admin.vendors.index') ? 'active' : '' }}" data-key="t-vendor-list">Vendor List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.vendors.create') }}" class="nav-link {{ request()->routeIs('admin.vendors.create') ? 'active' : '' }}" data-key="t-create-vendor">Create Vendor</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                <li class="nav-item">
                     <a href="calendar" class="nav-link menu-link"><i class="bi bi-calendar-week"></i> <span data-key="t-calendar">{{ __('t-calendar') }}</span> </a>
                 </li>
 

@@ -33,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
 
+    Route::get('/vendors', [VendorController::class, 'index'])->name('vendors.index');
+    
     // Route to show the form
     Route::get('/vendors/create', [VendorController::class, 'create'])->name('vendors.create');
 
