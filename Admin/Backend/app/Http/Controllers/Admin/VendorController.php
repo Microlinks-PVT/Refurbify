@@ -124,4 +124,19 @@ class VendorController extends Controller
         return redirect()->route('admin.vendors.index')
                          ->with('success', 'Vendor updated successfully!');
     }
+
+    public function destroy(Vendor $vendor)
+    {
+        // We delete the associated User, and the database 'onDelete('cascade')'
+        // will automatically delete the Vendor record.
+        
+        // Find the user first
+        $user = $vendor->user;
+
+        // Delete the user (this will also delete the vendor)
+        $user->delete();
+
+        return redirect()->route('admin.vendors.index')
+                         ->with('success', 'Vendor deleted successfully!');
+    }
 }
