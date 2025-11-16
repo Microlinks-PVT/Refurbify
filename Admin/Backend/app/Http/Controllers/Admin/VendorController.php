@@ -53,7 +53,7 @@ class VendorController extends Controller
             'shop_name' => $request->shop_name,
             'phone' => $request->phone,
             'address' => $request->address,
-            'status' => true,
+            'status' => $request->input('status', true),
         ]);
 
         // 4. Redirect
