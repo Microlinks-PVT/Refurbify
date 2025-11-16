@@ -68,4 +68,60 @@ class VendorController extends Controller
         return redirect()->route('admin.vendors.create')
                          ->with('success', 'Vendor created successfully!');
     }
+
+    public function edit(Vendor $vendor)
+    {
+        // $vendor is automatically fetched by Laravel
+        // We just need to pass it to the view
+        return view('admin.vendors.edit', compact('vendor'));
+    }
+
+    public function update(Request $request, Vendor $vendor)
+    {
+        // 1. Validate the data
+        $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                // This rule makes sure the email is unique,
+                // BUT ignores the vendor's own email address
+                \Illuminate\Validation\Rule::unique('users')->ignore($vendor->user_id)
+            ],
+            'password' => ['nullable', Rules\Password::defaults()], // Password is now optional
+            'shop_name' => ['required', 'string', 'max:255'],
+            'phone' => ['nullable', 'string'],
+            'address' => ['nullable', 'string'],
+            'status' => ['required', 'boolean'],
+        ]);
+
+        // 2. Update the User model
+        $vendor->user->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+        ]);
+
+        // 3. Update password ONLY if a new one was entered
+        if ($request->filled('password')) {
+            $vendor->user->update([
+                'password' => Hash::make($request->password)
+            ]);
+        }
+
+        // 4. Update the Vendor model
+        $vendor->update([
+            'shop_name' => $request->shop_name,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'status' => $request->status,
+        ]);
+
+        // 5. Redirect back to the list
+        return redirect()->route('admin.vendors.index')
+                         ->with('success', 'Vendor updated successfully!');
+    }
 }

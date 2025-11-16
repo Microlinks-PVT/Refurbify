@@ -51,7 +51,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-soft-primary">Edit</a>
+                                            <a href="{{ route('admin.vendors.edit', $vendor->id) }}" class="btn btn-sm btn-soft-primary">Edit</a>
                                             <a href="#" class="btn btn-sm btn-soft-danger">Delete</a>
                                         </td>
                                     </tr>
