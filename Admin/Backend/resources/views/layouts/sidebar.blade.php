@@ -52,11 +52,11 @@
                             <li class="nav-item">
                                 <a href="product-create" class="nav-link" data-key="t-create-product">{{ __('t-create-product') }}</a>
                             </li>
-                            <li class="nav-item">       
-                                <a href="categories" class="nav-link" data-key="t-categories">{{ __('t-categories') }}</a>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.categories.index') }}" class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" data-key="t-categories">{{ __('t-categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="sub-categories" class="nav-link" data-key="t-sub-categories">{{ __('t-sub-categories') }}</a>
+                                <a href="{{ route('admin.subcategories.index') }}" class="nav-link {{ request()->routeIs('admin.subcategories.*') ? 'active' : '' }}" data-key="t-sub-categories">{{ __('t-sub-categories') }}</a>
                             </li>
                         </ul>
                     </div>

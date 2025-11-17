@@ -22,6 +22,12 @@
                             <div class="card-body">
                                 <p class="text-muted fs-15">Sign in to continue to Toner.</p>
                                 <div class="p-2">
+
+                                    @if (session('error'))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
 
@@ -85,22 +91,13 @@
                                         </div>
                                     </form>
 
-                                    <div class="text-center mt-5">
-                                        <p class="mb-0">Don't have an account ? <a href="{{ route('register') }}"
-                                                class="fw-semibold text-secondary text-decoration-underline"> Sign Up</a>
-                                        </p>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--end col-->
+                </div>
             </div>
-            <!--end row-->
-        </div>
-        <!--end container-->
-
         <footer class="footer">
             <div class="container">
                 <div class="row">

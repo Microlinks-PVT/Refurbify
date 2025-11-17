@@ -5,7 +5,7 @@
 
 # 1. Dependencies
 # Ignore all vendor folders (e.g., Admin/Backend/vendor)
-**/vendor
+
 # Ignore all node_modules folders
 **/node_modules
 # Ignore Composer lock files (to avoid platform conflicts)
